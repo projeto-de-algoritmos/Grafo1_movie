@@ -1,9 +1,26 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
-#define MAX_LINE_SIZE 1024 // tamanho máximo de uma linha do arquivo
+#define MAX_LINE_SIZE 1000 // tamanho máximo de uma linha do arquivo
+typedef struct Node {
+    char* title;
+    struct Node* next;
+} Node;
+typedef struct Vertex {
+    char* name;
+    Node* head;
+} Vertex;
+
+typedef struct Graph {
+    Vertex* vertices[MAX_LINE_SIZE];
+    bool visited[MAX_LINE_SIZE];
+} Graph;
+
 
 int main() {
+    Graph* graph = createGraph();
+
     FILE* file = fopen( "./output.csv", "r");
 
     if (file == NULL) {
@@ -11,14 +28,12 @@ int main() {
         return 1;
     }
 
-    char line[MAX_LINE_SIZE];
-    while (fgets(line, MAX_LINE_SIZE, file)) {
-        char* token = strtok(line, ","); // separa a linha em tokens usando a vírgula como delimitador
-        while (token != NULL) {
-            printf("%s ", token);
-            token = strtok(NULL, ","); // avança para o próximo token
-        }
-        printf("\n");
+    char line[1024];
+    fgets(line, 1024, file); // skip header line
+
+    while (fgets(line, 1024, file)) {
+        char* productionCompany = strtok(line, ",");
+        char* title = strtok(NULL, ",");
     }
 
     fclose(file);
