@@ -1,8 +1,9 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 
-#define MAX_LINE_SIZE 1000 // tamanho máximo de uma linha do arquivo
+#define MAX_SIZE 1000// tamanho máximo de uma linha do arquivo
 typedef struct Node {
     char* title;
     struct Node* next;
@@ -13,9 +14,34 @@ typedef struct Vertex {
 } Vertex;
 
 typedef struct Graph {
-    Vertex* vertices[MAX_LINE_SIZE];
-    bool visited[MAX_LINE_SIZE];
+    Vertex* vertices[MAX_SIZE];
+    bool visited[MAX_SIZE];
 } Graph;
+
+Node* createNode(char* title) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->title = strdup(title);
+    newNode->next = NULL;
+    return newNode;
+}
+
+Vertex* createVertex(char* name) {
+    Vertex* newVertex = (Vertex*)malloc(sizeof(Vertex));
+    newVertex->name = strdup(name);
+    newVertex->head = NULL;
+    return newVertex;
+}
+
+
+Graph* createGraph() {
+    Graph* graph = (Graph*)malloc(sizeof(Graph));
+    for (int i = 0; i < MAX_SIZE; i++) {
+        graph->vertices[i] = NULL;
+        graph->visited[i] = false;
+    }
+    return graph;
+}
+
 
 
 int main() {
