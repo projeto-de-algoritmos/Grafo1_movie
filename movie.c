@@ -4,11 +4,10 @@
 #define MAX_LINE_SIZE 1024 // tamanho máximo de uma linha do arquivo
 
 int main() {
-    char filename[] = "movies_metadata_autor - movies_metadata.csv"; // substitua pelo caminho real do arquivo
-    FILE* file = fopen(filename, "r");
+    FILE* file = fopen( "./output.csv", "r");
 
     if (file == NULL) {
-        printf("Erro ao abrir o arquivo %s", filename);
+        printf("Erro ao abrir o arquivo ");
         return 1;
     }
 
