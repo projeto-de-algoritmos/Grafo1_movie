@@ -42,6 +42,42 @@ Graph* createGraph() {
     return graph;
 }
 
+void addEdge(Graph* graph, char* src, char* dest) {
+    Vertex* srcVertex = NULL;
+    Vertex* destVertex = NULL;
+    for (int i = 0; i < MAX_SIZE; i++) {
+        if (graph->vertices[i] == NULL) {
+            break;
+        }
+        if (strcmp(graph->vertices[i]->name, src) == 0) {
+            srcVertex = graph->vertices[i];
+        }
+        if (strcmp(graph->vertices[i]->name, dest) == 0) {
+            destVertex = graph->vertices[i];
+        }
+    }
+    if (srcVertex == NULL) {
+        srcVertex = createVertex(src);
+        for (int i = 0; i < MAX_SIZE; i++) {
+            if (graph->vertices[i] == NULL) {
+                graph->vertices[i] = srcVertex;
+                break;
+            }
+        }
+    }
+    if (destVertex == NULL) {
+        destVertex = createVertex(dest);
+        for (int i = 0; i < MAX_SIZE; i++) {
+            if (graph->vertices[i] == NULL) {
+                graph->vertices[i] = destVertex;
+                break;
+            }
+        }
+    }
+    Node* newNode = createNode(dest);
+    newNode->next = srcVertex->head;
+    srcVertex->head = newNode;
+}
 
 
 int main() {
@@ -60,6 +96,7 @@ int main() {
     while (fgets(line, 1024, file)) {
         char* productionCompany = strtok(line, ",");
         char* title = strtok(NULL, ",");
+        addEdge(graph, productionCompany, title);
     }
 
     fclose(file);
