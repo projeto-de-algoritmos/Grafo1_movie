@@ -79,6 +79,29 @@ void addEdge(Graph* graph, char* src, char* dest) {
     srcVertex->head = newNode;
 }
 
+void DFS(Graph* graph, int v) {
+    printf("%s\n", graph->vertices[v]->name);
+    graph->visited[v] = true;
+
+    Node* adjList = graph->vertices[v]->head;
+    while (adjList != NULL) {
+        char* connectedVertex = adjList->title;
+        for (int i = 0; i < MAX_SIZE; i++) {
+            if (graph->vertices[i] == NULL) {
+                break;
+            }
+            if (strcmp(graph->vertices[i]->name, connectedVertex) == 0) {
+                int connectedVertexIndex = i;
+                if (!graph->visited[connectedVertexIndex]) {
+                    DFS(graph, connectedVertexIndex);
+                }
+                break;
+            }
+        }
+        adjList = adjList->next;
+    }
+}
+
 
 int main() {
     Graph* graph = createGraph();
