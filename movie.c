@@ -121,7 +121,7 @@ int main() {
         char* title = strtok(NULL, ",");
         addEdge(graph, productionCompany, title);
     }
-
+    DFS(graph,0);
     fclose(file);
     return 0;
 }
