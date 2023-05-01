@@ -17,6 +17,10 @@ O projeto desenvolvido pela dupla visa indicar filmes produzidos por uma mesma e
 **Pré-requisitos**: Compilador de C.
 
 ## Uso
+### Comandos: 
+- git clone https://github.com/projeto-de-algoritmos/Grafo1_movie.git <br>
+- cd Grafo1_movie  <br>
+- gcc -o grafo move.c <br>
 
 
 ## Outro 
