@@ -17,3 +17,7 @@ O projeto desenvolvido pela dupla visa indicar filmes produzidos por uma mesma e
 **Pré-requisitos**: Compilador de C.
 
 ## Uso
+
+
+## Outro 
+**Dataset utilizado**: https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset
