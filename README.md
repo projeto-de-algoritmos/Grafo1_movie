@@ -9,7 +9,7 @@
 | 16/0125910  |  Itallo Cavalcante Gravina |
 
 ## **Sobre**
-O projeto desenvolvido pela dupla visa indicar filmes de gêneros semelhantes através de uma busca em profundidade no grafo, recomendando assim filmes que o usuário possa gostar de assistir de acordo com os títulos já assistidos por ele.
+O projeto desenvolvido pela dupla visa indicar filmes produzidos por uma mesma empresa através de uma busca em profundidade no grafo, recomendando assim filmes que o usuário possa gostar de assistir de acordo com os títulos já produzidos por esta empresa.
 
 ## Instalação 
 **Linguagem**: C<br>
